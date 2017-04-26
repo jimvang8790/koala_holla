@@ -46,4 +46,29 @@ app.get('/koala',function(req,res){
       });
     }
   });
-});
+}); // end app.get
+
+app.post('/addingKoala', function(req, res) {
+  var data = req.body;
+  var newKoala = [
+    data.name,
+    data.sex,
+    data.age,
+    data.transfer,
+    data.notes
+  ];
+
+  var insert = 'INSERT INTO koala (name, sex, age, ready_for_transfer, notes) VALUES ($1, $2, $3, $4, $5)';
+
+  pool.connect(function(err, connection, done){
+    if(err){
+      console.log(err);
+      res.send(400);
+    }
+    else{
+      connection.query(insert, newKoala);
+      done();
+      res.send(200);
+    }
+  });
+}); // end of app.post

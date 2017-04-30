@@ -1,11 +1,17 @@
 -- this is how millie, dev, or anyone else who wants to recreate our database
 -- this is what we copy and paste into the database we created called holla
 -- then execute the INSERT INTO to create our table
+-- the created table in the database is called koala
 CREATE TABLE koala(
+  -- id will be provided by the database
   id SERIAL PRIMARY KEY NOT NULL,
+  -- name of the koala will be a varying character and is UNIQUE to that koala
   name VARCHAR(12) UNIQUE,
+  -- sex of the koala will be a varying character
   sex VARCHAR(1),
+  -- the age of the koala will be an interger
   age INT,
+  -- ready for transfer column will be true/false
   ready_for_transfer BOOLEAN,
   -- 140 is the character limit
   notes VARCHAR(140)
